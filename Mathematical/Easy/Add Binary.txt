@@ -1,0 +1,18 @@
+class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        a, b = a[::-1], b[::-1]
+        res=""
+        carry = 0
+        for i in range (0,max(len(a), len(b))):
+            digita=ord(a[i]) - ord("0") if i<len(a) else 0
+            digitb=ord(b[i]) - ord("0") if i<len(b) else 0
+            digit_ans = digita+digitb+carry
+            final_digit_ans = digit_ans % 2
+            res = str(final_digit_ans) + res
+            carry = digit_ans // 2
+        if carry:
+            res = "1"+res
+        return res
+            
+            
+        
