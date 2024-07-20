@@ -1,0 +1,24 @@
+class Node:
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
+
+class Solution:
+    def multiply_two_lists(self, first: Node, second: Node) -> int:
+        num1, num2 = 0, 0
+        MOD = 1000000007  # To handle large numbers and prevent overflow issues
+        
+        # Traverse the first list and construct the first number
+        while first:
+            num1 = (num1 * 10 + first.data) % MOD
+            first = first.next
+        
+        # Traverse the second list and construct the second number
+        while second:
+            num2 = (num2 * 10 + second.data) % MOD
+            second = second.next
+        
+        # Multiply the two numbers and take modulo to handle large numbers
+        product = (num1 * num2) % MOD
+        
+        return product
